@@ -1,0 +1,23 @@
+GLfloat
+glmUnitize(GLMmodel* model);
+
+GLvoid
+glmDimensions(GLMmodel* model, GLfloat* dimensions);
+
+GLvoid
+glmScale(GLMmodel* model, GLfloat scale);
+
+GLvoid
+glmDelete(GLMmodel* model);
+
+GLMmodel* 
+glmReadOBJ(const char* filename);
+
+GLvoid
+glmWriteOBJ(GLMmodel* model, char* filename, GLuint mode);
+
+GLvoid
+glmDraw(GLMmodel* model, GLuint mode);
+
+GLuint
+glmList(GLMmodel* model, GLuint mode);

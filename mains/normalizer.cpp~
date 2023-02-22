@@ -1,0 +1,265 @@
+// .obj model loader/normalizer using "glm" library
+// Mohammad R. Abolhassani
+
+#include <GL/glut.h>
+#include <iostream>
+#include <cstring>
+
+#include "../glmwithtexture/glm.h"
+
+using namespace std;
+
+GLMmodel* pmodel;
+GLuint displaylist;
+
+float cameraR = 10.0f; //camera radius
+float cameraH = 1.0f; //camera height
+float cameraAngleX = 0.0f; //camera rotation about x-axis
+float cameraAngleY = 0.0f; //camera rotation about y-axis
+
+/* Lighting Variables */
+GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
+GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
+
+GLfloat mat_ambient[] = { 0.7, 0.7, 0.7, 1.0 };
+GLfloat mat_diffuse[] = { 0.8, 0.8, 0.8, 1.0 };
+GLfloat mat_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+GLfloat high_shininess[] = { 100.0 };
+
+void printLog(){
+	GLfloat minMax[6];
+	GLfloat dims[3];
+	glmDimensions(pmodel, dims);
+	glmMinMax(pmodel, minMax);
+
+	cout << "dementions: ";
+	for(int i=0; i<3; i++)
+		cout << ' ' << dims[i];
+
+	cout << "\nminX to maxZ:\n mins:";
+	for(int i=0; i<6; i++){
+		cout << ' ' << minMax[i];
+		if(i == 2)
+			cout << "\n maxs:";
+	}
+	cout << endl;
+}
+
+void normalize(GLfloat x_to_be){
+	GLfloat minMax[6];
+	glmMinMax(pmodel, minMax);
+
+	GLfloat trans[3];
+	trans[0] = -(minMax[0]+minMax[3])/2;
+	trans[1] = -minMax[1];
+	trans[2] = -(minMax[2]+minMax[5])/2;
+	glmTranslate(pmodel, trans);
+
+	GLfloat scl;
+	scl = x_to_be; // /(minMax[3] - minMax[0]);
+	if(scl < 0)  scl *= -1;
+	glmScale(pmodel, scl);
+	cout << "Scale Parameter: " << scl << endl;
+} 
+	
+//Called when a key is pressed
+void handleKeypress(unsigned char key, int x, int y) {
+	switch (key) {
+		case 27: //Escape key
+			exit(0);
+			break;
+
+		case '=': //zoom in
+			if(cameraR > 0)
+				cameraR -= 1.0f;
+			break;	
+	
+		case '-': //zoom out
+			cameraR += 1.0f;
+			break;
+
+		case '9':
+			cameraH -= 1.0f;
+			break;	
+	
+		case '0':
+			cameraH += 1.0f;
+			break;
+
+		case 'p':
+			printLog();	
+			break;
+
+		case 'n':
+			cameraAngleX = cameraAngleY = 0;
+			GLfloat newx;
+			cout << "\nEnter new width (x dimention): ";
+			cin >> newx; 
+			normalize(newx);
+			printLog();
+			break;
+	
+	}
+}
+
+//Called when a special key is pressed
+void handleSpecialKeypress(int key, int x, int y) {
+	switch (key) {
+		case GLUT_KEY_RIGHT:
+			cameraAngleY += 1.0f;
+			if(cameraAngleY >= 360)
+				cameraAngleY -= 360;
+			break;
+
+		case GLUT_KEY_LEFT:
+			cameraAngleY -= 1.0f;
+			if(cameraAngleY <= 0)
+				cameraAngleY += 360;
+			break;
+
+		case GLUT_KEY_DOWN:
+			if(cameraAngleX < 90)
+				cameraAngleX += 1.0f;
+			break;
+
+		case GLUT_KEY_UP:
+			if(cameraAngleX > -90)
+				cameraAngleX -= 1.0f;
+			break;
+	}
+}
+
+//Initializes 3D rendering
+void initRendering() {
+//	glEnable(GL_COLOR_MATERIAL); //Enable color
+	glEnable(GL_NORMALIZE); //Automatically normalize normals
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING); //Enable lighting
+	glEnable(GL_LIGHT0); //Enable light #0
+	glEnable(GL_LIGHT1); //Enable light #1
+	glDepthFunc(GL_LESS);
+//	glEnable(GL_MATERIAL);
+//	glShadeModel(GL_SMOOTH); //Enable smooth shading
+	glEnable(GL_TEXTURE_2D);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glClearColor(0.1f, 0.1f, 0.2f, 0.0f); //Change the background
+
+	glEnable(GL_LINE_SMOOTH);
+	/* glEnable (GL_POLYGON_SMOOTH); */
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+}
+
+//Called when the window is resized
+void handleResize(int w, int h) {
+	//Tell OpenGL how to convert from coordinates to pixel values
+	glViewport(0, 0, w, h);
+	glMatrixMode(GL_PROJECTION); //Switch to setting the camera perspective
+	//Set the camera perspective
+	glLoadIdentity(); //Reset the camera
+	gluPerspective(45.0,                  //The camera angle
+				   (double)w / (double)h, //The width-to-height ratio
+				   1.0,                   //The near z clipping coordinate
+				   2000.0);                //The far z clipping coordinate
+}
+
+
+//Draws the 3D scene
+void drawScene() {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	glMatrixMode(GL_MODELVIEW); //Switch to the drawing perspective
+	glLoadIdentity(); //Reset the drawing perspective
+
+	glTranslatef(0.0f, -cameraH, -cameraR); //Set camera position
+	glRotatef(-cameraAngleX, -1.0f, 0.0f, 0.0f); //Rotate the camera about x-axis
+	glRotatef(-cameraAngleY, 0.0f, -1.0f, 0.0f); //Rotate the camera about y-axis
+
+/*	//Add ambient light
+	GLfloat ambientColor[] = {0.2f, 0.2f, 0.2f, 1.0f};
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
+	
+	//Add positioned light
+	GLfloat lightColor0[] = {0.5f, 0.5f, 0.5f, 1.0f};
+	GLfloat lightPos0[] = {10.0f, 10.0f, 10.0f, 1.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor0);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos0);
+	
+	//Add directed light
+	GLfloat lightColor1[] = {0.2f, 0.2f, 0.2f, 1.0f};
+	GLfloat lightPos1[] = {-1.0f, -1.0f, -1.0f, 0.0f};
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
+	glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
+*/
+	
+	glPushMatrix();
+	
+
+	glmDraw(pmodel, GLM_SMOOTH|GLM_MATERIAL);//|GLM_TEXTURE);
+	//glCallList(displaylist);
+
+	glPopMatrix();
+
+	glutSwapBuffers(); //Send the 3D scene to the screen
+}
+
+//Updates Scene
+void update(int value) {
+
+	glutPostRedisplay();
+	glutTimerFunc(25, update, 0);
+}
+
+int main(int argc, char** argv) {
+
+	char filename[256];
+	if (argc > 1)/* make sure at least 2 args, program and file */
+      		strncpy(filename, argv[argc - 1], sizeof(filename));
+
+	//Initialize GLUT
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(600, 600); //Set the window size
+	
+	//Create the window
+	glutCreateWindow(".obj Loader/Normalizer by MRA"); //set window title
+	initRendering(); //Initialize rendering
+
+
+	
+	//Set handler functions for drawing, keypresses, and window resizes
+	glutDisplayFunc(drawScene);
+	glutKeyboardFunc(handleKeypress);
+	glutSpecialFunc(handleSpecialKeypress);
+	glutReshapeFunc(handleResize);
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
+    glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
+
+	
+//	pmodel = glmReadOBJ("../OBJECTS/Crate1_OBJ/Crate1.obj");
+//	displaylist = glmList(pmodel, GLM_SMOOTH|GLM_MATERIAL|GLM_TEXTURE);
+
+	/* load up the model */
+	pmodel = glmReadOBJ(filename);
+	//glmUnitize(pmodel);
+	glmVertexNormals(pmodel, 90.0, GL_TRUE);
+
+	normalize(0.00376638);
+	printLog();
+
+	glutTimerFunc(25, update, 0); //Add a timer
+
+	glutMainLoop(); //Start the main loop.  glutMainLoop doesn't return.
+	return 0; //This line is never reached
+}
+

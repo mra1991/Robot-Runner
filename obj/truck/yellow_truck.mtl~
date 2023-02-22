@@ -1,0 +1,89 @@
+# Max2Mtl Version 4.0 Mar 10th, 2001
+#
+# Multi/Sub Material__90 (10) to come 
+#
+newmtl fh16_negro_plast
+Ka  0.2 0.2 0.2
+Kd  0.2 0.2 0.2
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  5.0
+illum 2
+#
+newmtl fh16_amarillo_ca
+Ka  1.0 0.7 0.1
+Kd  1.0 0.7 0.1
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  7.9
+illum 2
+#
+newmtl pby_cromado
+Ka  0.3 0.3 0.3
+Kd  0.3 0.3 0.3
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  0.5
+illum 2
+#
+newmtl cristal
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.5 0.5 0.5
+d  0.7
+Ns  8.2
+illum 2
+#
+newmtl pby_cromado1
+Ka  0.3 0.3 0.3
+Kd  0.3 0.3 0.3
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  0.5
+illum 2
+#
+newmtl cristal1
+Ka  0.0 0.0 0.0
+Kd  0.0 0.0 0.0
+Ks  0.5 0.5 0.5
+d  0.9
+Ns  8.3
+illum 2
+#map_Kd LAKE3.JPG
+#
+newmtl Default
+Ka  0.7 0.7 0.7
+Kd  0.7 0.7 0.7
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  7.1
+illum 2
+#
+newmtl fh16_neumaticos
+Ka  0.1 0.1 0.1
+Kd  0.1 0.1 0.1
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  0.5
+illum 2
+#
+newmtl fh16_amarillo1
+Ka  1.0 0.7 0.1
+Kd  1.0 0.7 0.1
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  7.9
+illum 2
+#
+newmtl fh16_amarillo_vo
+Ka  1.0 0.7 0.1
+Kd  1.0 0.7 0.1
+Ks  0.5 0.5 0.5
+d  1.0
+Ns  0.5
+illum 2
+#map_Kd VOLVO.TGA
+#
+# Multi/Sub Material__90 done 
+#
+# EOF

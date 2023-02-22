@@ -1,0 +1,1 @@
+gcc glutobj.c glm.c glmimg.c glm_util.c glmimg_jpg.c -lGL -lGLU -lglut -lm -ljpeg -o test

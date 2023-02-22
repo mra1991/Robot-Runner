@@ -1,0 +1,61 @@
+newmtl blinn5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd black_leather_texture.pnm
+Ni 1.00
+newmtl phongE2SG
+illum 4
+Kd 0.42 0.66 0.62
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl phongE3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.53 0.53 0.53
+Tf 1.00 1.00 1.00
+map_Kd skin_texture.pnm
+Ni 1.00
+Ks 0.74 0.74 0.74
+newmtl phongE4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd fabric_texture.pnm
+Ni 1.00
+Ks 0.00 0.00 0.00
+newmtl phongE5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.04 0.04 0.04
+Tf 1.00 1.00 1.00
+map_Kd speckled_metal_texture.pnm
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl phongE6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hat_texture.pnm
+Ni 1.00
+Ks 0.02 0.02 0.02
+newmtl phongE7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd laz_eye_texture.pnm
+Ni 1.00
+Ks 0.50 0.50 0.50

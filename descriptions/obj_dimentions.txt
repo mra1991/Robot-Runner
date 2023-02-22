@@ -1,0 +1,27 @@
+ID                NAME		X_dimention	Y_dimention	Z_dimention
+----------------------------------------------------------------------------
+00             OLD_BOX		2		2.1005		2.09146
+01            SOFT_BOX		2		2		2
+02                COIN		0.5		0.035238	0.5
+03              MAGNET		0.1		1.02991		0.757327
+04      CONTAINER_SHIP		15		24.6388		51.7113
+05         CRUISE_SHIP		5		4.09741		16.665
+06               JETTY		6		3.71734		6
+07             T_CRANE		2.8		76.1694		82.0866
+08          LIFT_TRUCK		6.1		4.69268		1.99569
+09          BLUE_TRUCK		5		7.0186		10.2607
+10        YELLOW_TRUCK		5		5.93641		10.4531
+11        OBSTACLE_LOW		2		0.909089	0.090909
+12        OBSTACLE_TOP		2		1.0909		0.090909
+13                PIPE		0.5		1.66712		0.5
+14              PIPE_L		1.5		1.50741		0.683157
+15       CONTAINER_RED		5		6.24997		24.4711
+16      CONTAINER_BLUE		5		6.24997		24.4711
+17       TOW_TRACTOR_B		5		7.99432		24.8072
+18       TOW_TRACTOR_W		5		7.99432		24.8072
+19               ROBOT		1.3		2.39781		0.989216
+20          ROBOT_HEAD		0.6		0.54681		0.726979
+21          ROBOT_NECK		0.2		0.27745		0.200072
+22          ROBOT_BODY		1.3		0.85346		1.01156
+23          ROBOT_BACK		0.4		0.699145	0.400145
+24         ROBOT_WHEEL		0.7		0.62692		0.7

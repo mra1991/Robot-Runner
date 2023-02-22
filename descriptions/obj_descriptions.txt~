@@ -1,0 +1,28 @@
+ID NAME			FILE_NAME				TEXTURE?	WIDTH(X)
+---------------------------------------------------------------------------------------- 
+00 OLD_BOX		../obj/box/old_box.obj			1		02.0
+01 SOFT_BOX		../obj/box/soft_box.obj			1		02.0
+02 COIN			../obj/power/coin.obj			0		00.5
+03 MAGNET		../obj/power/magnet.obj			0		00.1
+04 CONTAINER_SHIP	../obj/ship/container_ship.obj		0		15.0
+05 CRUISE_SHIP		../obj/ship/cruise_ship.obj		0		05.0
+06 JETTY		../obj/structure/jetty.obj		0		06.0
+07 T_CRANE		../obj/structure/t_crane.obj		0		02.8
+08 LIFT_TRUCK		../obj/truck/lift_truck.obj		0		06.1
+09 BLUE_TRUCK		../obj/truck/blue_truck.obj		0		05.0
+10 YELLOW_TRUCK		../obj/truck/yellow_truck.obj		0		05.0
+11 OBSTACLE_LOW		../obj/obstacle/obstacle_low.obj	0		02.0 
+12 OBSTACLE_TOP		../obj/obstacle/obstacle_top.obj	0		02.0
+13 PIPE			../obj/structure/pipe.obj		0		00.5
+14 PIPE_L		../obj/structure/pipe_l.obj		0		01.5
+15 CONTAINER_RED	../obj/box/container_red.obj		0		05.0
+16 CONTAINER_BLUE	../obj/box/container_blue.obj		0		05.0
+17 TOW_TRACTOR_B	../obj/truck/tow_tractor_b.obj		0		05.0
+18 TOW_TRACTOR_W	../obj/truck/tow_tractor_w.obj		0		05.0
+19 ROBOT		../obj/robot/robot.obj			0		01.3
+20 ROBOT_HEAD		../obj/robot/robot_head.obj		0		00.6
+21 ROBOT_NECK		../obj/robot/robot_neck.obj		0		00.2
+22 ROBOT_BODY		../obj/robot/robot_body.obj		0		01.3
+23 ROBOT_BACK		../obj/robot/robot_back.obj		0		00.4
+24 ROBOT_WHEEL		../obj/robot/robot_wheel.obj		0		00.7
+EOF

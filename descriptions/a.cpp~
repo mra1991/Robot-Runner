@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+	float c;
+	cin >> c;
+	float d = c*10;
+	cout << (int)d;
+	
+	return 0;
+}

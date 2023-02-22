@@ -1,0 +1,107 @@
+# Max2Mtl Version 4.0 Mar 10th, 2001
+#
+newmtl BODY_01
+Ka  1.0 0.0 0.0
+Kd  1.0 0.0 0.0
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  7.3
+illum 2
+#
+newmtl WHITE-1
+Ka  1.0 1.0 1.0
+Kd  1.0 1.0 1.0
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  0.0
+illum 2
+#
+newmtl WHEEL_ALUMINIUM
+Ka  0.2 0.2 0.2
+Kd  0.7 0.7 0.7
+Ks  0.6 0.6 0.7
+d  1.0
+Ns  14.5
+illum 2
+#
+newmtl LIGHT_YELLOW
+Ka  1.0 1.0 0.5
+Kd  1.0 1.0 0.5
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  5.0
+illum 2
+#
+newmtl LIGHT_WHITE
+Ka  0.9 0.9 0.9
+Kd  0.9 0.9 0.9
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  5.0
+illum 2
+#
+newmtl LIGHT_RED
+Ka  1.0 0.0 0.0
+Kd  1.0 0.0 0.0
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  5.0
+illum 2
+#
+newmtl LIGHT_ORANGE
+Ka  1.0 0.6 0.0
+Kd  1.0 0.6 0.0
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  5.8
+illum 2
+#
+newmtl glass_sc
+Ka  0.1 0.1 0.1
+Kd  0.1 0.1 0.1
+Ks  1.0 1.0 1.0
+d  0.3
+Ns  9.1
+illum 2
+#
+newmtl GREY_LIGHT
+Ka  0.3 0.3 0.3
+Kd  0.3 0.3 0.3
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  6.4
+illum 2
+#
+newmtl GREY_DARK
+Ka  0.3 0.3 0.3
+Kd  0.3 0.3 0.3
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  3.0
+illum 2
+#
+newmtl Material__40
+Ka  0.2 0.2 0.2
+Kd  0.2 0.2 0.2
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  9.6
+illum 2
+#
+newmtl BLACK_MATTE
+Ka  0.1 0.2 0.2
+Kd  0.1 0.2 0.2
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  0.0
+illum 2
+#
+newmtl BLACK_BLACK
+Ka  0.1 0.1 0.1
+Kd  0.1 0.1 0.1
+Ks  1.0 1.0 1.0
+d  1.0
+Ns  0.0
+illum 2
+#
+# EOF
